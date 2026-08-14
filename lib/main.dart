@@ -193,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text('TASKFACE', style: TextStyle(color: AppColors.neonBlue, fontSize: 26, fontWeight: FontWeight.w900, letterSpacing: 1.2)),
-        Text('Energy-Synced Productivity', style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
+        Text('Start of Productivity', style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
       ]),
       Row(children: [_buildStreakBadge(), const SizedBox(width: 10), _buildCoinBank()]),
     ]),
