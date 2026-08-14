@@ -6,7 +6,7 @@ void main() => runApp(const TaskFace());
 // THEME CONSTANTS
 class AppColors {
   static const Color background = Color(0xFF0F0E17);
-  static const Color neonOrange = Color(0xFFFF8906);
+  static const Color neonBlue = Color.fromARGB(255, 7, 255, 247);
   static const Color synthPink = Color(0xFFE53170);
   static const Color surface = Color(0xFF2E2F3E);
   static const Color textPrimary = Color(0xFFFFFFFE);
@@ -45,7 +45,7 @@ class TaskFace extends StatelessWidget {
     theme: ThemeData(
       useMaterial3: true,
       scaffoldBackgroundColor: AppColors.background,
-      colorScheme: const ColorScheme.dark(primary: AppColors.neonOrange, secondary: AppColors.synthPink, surface: AppColors.surface),
+      colorScheme: const ColorScheme.dark(primary: AppColors.neonBlue, secondary: AppColors.synthPink, surface: AppColors.surface),
     ),
     home: const HomeScreen(),
   );
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       backgroundColor: AppColors.surface,
       duration: const Duration(milliseconds: 900),
-      content: Text('✅ ${task.title} complete! +$earned pts', style: const TextStyle(color: AppColors.neonOrange, fontWeight: FontWeight.bold)),
+      content: Text('✅ ${task.title} complete! +$earned pts', style: const TextStyle(color: AppColors.neonBlue, fontWeight: FontWeight.bold)),
     ));
   }
 
@@ -192,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
     padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text('TASKFACE', style: TextStyle(color: AppColors.neonOrange, fontSize: 26, fontWeight: FontWeight.w900, letterSpacing: 1.2)),
+        Text('TASKFACE', style: TextStyle(color: AppColors.neonBlue, fontSize: 26, fontWeight: FontWeight.w900, letterSpacing: 1.2)),
         Text('Energy-Synced Productivity', style: TextStyle(color: AppColors.textMuted, fontSize: 12)),
       ]),
       Row(children: [_buildStreakBadge(), const SizedBox(width: 10), _buildCoinBank()]),
@@ -219,18 +219,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCoinBank() => Container(
     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(14), border: Border.all(color: AppColors.neonOrange.withValues(alpha: 0.5), width: 1.5)),
+    decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(14), border: Border.all(color: AppColors.neonBlue.withValues(alpha: 0.5), width: 1.5)),
     child: Row(children: [
       const Text('🪙', style: TextStyle(fontSize: 14)),
       const SizedBox(width: 4),
-      Text('$_points', style: const TextStyle(color: AppColors.neonOrange, fontWeight: FontWeight.bold, fontSize: 14)),
+      Text('$_points', style: const TextStyle(color: AppColors.neonBlue, fontWeight: FontWeight.bold, fontSize: 14)),
     ]),
   );
 
   Widget _buildAvatarSection() => Container(
     margin: const EdgeInsets.fromLTRB(20, 12, 20, 12),
     padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
-    decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(20), border: Border.all(color: AppColors.neonOrange.withValues(alpha: 0.25))),
+    decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(20), border: Border.all(color: AppColors.neonBlue.withValues(alpha: 0.25))),
     child: Column(children: [
       CustomPaint(size: const Size(190, 190), painter: AvatarPainter(gender: _avatarGender, auraId: _equippedAura, eyewearId: _equippedEyewear, headwearId: _equippedHeadwear)),
       const SizedBox(height: 10),
@@ -244,9 +244,9 @@ class _HomeScreenState extends State<HomeScreen> {
             margin: const EdgeInsets.symmetric(horizontal: 4),
             padding: const EdgeInsets.symmetric(vertical: 9),
             decoration: BoxDecoration(
-              color: sel ? AppColors.neonOrange : AppColors.background,
+              color: sel ? AppColors.neonBlue : AppColors.background,
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: sel ? AppColors.neonOrange : AppColors.textMuted.withValues(alpha: 0.3)),
+              border: Border.all(color: sel ? AppColors.neonBlue : AppColors.textMuted.withValues(alpha: 0.3)),
             ),
             child: Text(g == 'Female' ? '👩 Female' : '👨 Male', textAlign: TextAlign.center,
               style: TextStyle(color: sel ? Colors.black : AppColors.textMuted, fontWeight: FontWeight.bold, fontSize: 13)),
@@ -263,12 +263,12 @@ class _HomeScreenState extends State<HomeScreen> {
     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         const Text('⏱ AVAILABLE TIME POOL', style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 13, letterSpacing: 1)),
-        Text('${_timePool.round()} min', style: const TextStyle(color: AppColors.neonOrange, fontWeight: FontWeight.bold, fontSize: 15)),
+        Text('${_timePool.round()} min', style: const TextStyle(color: AppColors.neonBlue, fontWeight: FontWeight.bold, fontSize: 15)),
       ]),
       SliderTheme(
         data: SliderTheme.of(context).copyWith(
-          activeTrackColor: AppColors.neonOrange, inactiveTrackColor: AppColors.background, thumbColor: AppColors.neonOrange,
-          overlayColor: AppColors.neonOrange.withValues(alpha: 0.2), valueIndicatorColor: AppColors.neonOrange,
+          activeTrackColor: AppColors.neonBlue, inactiveTrackColor: AppColors.background, thumbColor: AppColors.neonBlue,
+          overlayColor: AppColors.neonBlue.withValues(alpha: 0.2), valueIndicatorColor: AppColors.neonBlue,
         ),
         child: Slider(min: 5, max: 120, divisions: 23, value: _timePool, label: '${_timePool.round()} min', onChanged: _onSliderChanged),
       ),
@@ -301,8 +301,8 @@ class _HomeScreenState extends State<HomeScreen> {
       Text(title, style: const TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w900, fontSize: 15, letterSpacing: 1)),
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-        decoration: BoxDecoration(color: AppColors.neonOrange.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(10)),
-        child: Text('$count', style: const TextStyle(color: AppColors.neonOrange, fontWeight: FontWeight.bold, fontSize: 12)),
+        decoration: BoxDecoration(color: AppColors.neonBlue.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(10)),
+        child: Text('$count', style: const TextStyle(color: AppColors.neonBlue, fontWeight: FontWeight.bold, fontSize: 12)),
       ),
     ]),
   );
@@ -315,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
   );
 
   Widget _buildTaskCard(Task task) {
-    final Color ec = task.energy == 'Low' ? Colors.greenAccent : (task.energy == 'Medium' ? AppColors.neonOrange : AppColors.synthPink);
+    final Color ec = task.energy == 'Low' ? Colors.greenAccent : (task.energy == 'Medium' ? AppColors.neonBlue : AppColors.synthPink);
     return Container(
       key: ValueKey(task.id),
       margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
@@ -326,8 +326,8 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: () => _handleCheckTap(task),
           child: Container(
             width: 30, height: 30,
-            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.neonOrange, width: 2)),
-            child: const Icon(Icons.check, size: 16, color: AppColors.neonOrange),
+            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.neonBlue, width: 2)),
+            child: const Icon(Icons.check, size: 16, color: AppColors.neonBlue),
           ),
         ),
         const SizedBox(width: 14),
@@ -357,7 +357,7 @@ class _HomeScreenState extends State<HomeScreen> {
       TextField(
         controller: _titleController,
         style: const TextStyle(color: AppColors.textPrimary),
-        cursorColor: AppColors.neonOrange,
+        cursorColor: AppColors.neonBlue,
         decoration: InputDecoration(
           hintText: 'e.g. Write journal entry', hintStyle: const TextStyle(color: AppColors.textMuted),
           filled: true, fillColor: AppColors.background,
@@ -373,8 +373,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 14),
           decoration: BoxDecoration(
-            color: AppColors.neonOrange, borderRadius: BorderRadius.circular(12),
-            boxShadow: [BoxShadow(color: AppColors.neonOrange.withValues(alpha: 0.35), blurRadius: 12, spreadRadius: 0.5)],
+            color: AppColors.neonBlue, borderRadius: BorderRadius.circular(12),
+            boxShadow: [BoxShadow(color: AppColors.neonBlue.withValues(alpha: 0.35), blurRadius: 12, spreadRadius: 0.5)],
           ),
           child: const Center(child: Text('+ ADD TASK', style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 1, color: Colors.black))),
         ),
@@ -386,7 +386,7 @@ class _HomeScreenState extends State<HomeScreen> {
     padding: const EdgeInsets.symmetric(horizontal: 12),
     decoration: BoxDecoration(color: AppColors.background, borderRadius: BorderRadius.circular(12)),
     child: DropdownButtonHideUnderline(child: DropdownButton<String>(
-      value: _newTaskEnergy, isExpanded: true, dropdownColor: AppColors.surface, iconEnabledColor: AppColors.neonOrange,
+      value: _newTaskEnergy, isExpanded: true, dropdownColor: AppColors.surface, iconEnabledColor: AppColors.neonBlue,
       style: const TextStyle(color: AppColors.textPrimary, fontSize: 13),
       items: _energyLevels.map((e) => DropdownMenuItem<String>(value: e, child: Text(e))).toList(),
       onChanged: (v) { if (v != null) setState(() => _newTaskEnergy = v); },
@@ -397,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
     padding: const EdgeInsets.symmetric(horizontal: 12),
     decoration: BoxDecoration(color: AppColors.background, borderRadius: BorderRadius.circular(12)),
     child: DropdownButtonHideUnderline(child: DropdownButton<int>(
-      value: _newTaskDuration, isExpanded: true, dropdownColor: AppColors.surface, iconEnabledColor: AppColors.neonOrange,
+      value: _newTaskDuration, isExpanded: true, dropdownColor: AppColors.surface, iconEnabledColor: AppColors.neonBlue,
       style: const TextStyle(color: AppColors.textPrimary, fontSize: 13),
       items: _durationMilestones.map((d) => DropdownMenuItem<int>(value: d, child: Text('$d min'))).toList(),
       onChanged: (v) { if (v != null) setState(() => _newTaskDuration = v); },
@@ -436,8 +436,8 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: AppColors.background, borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: equipped ? AppColors.neonOrange : Colors.transparent, width: 1.5),
-        boxShadow: equipped ? [BoxShadow(color: AppColors.neonOrange.withValues(alpha: 0.3), blurRadius: 8, spreadRadius: 0.5)] : [],
+        border: Border.all(color: equipped ? AppColors.neonBlue : Colors.transparent, width: 1.5),
+        boxShadow: equipped ? [BoxShadow(color: AppColors.neonBlue.withValues(alpha: 0.3), blurRadius: 8, spreadRadius: 0.5)] : [],
       ),
       child: Row(children: [
         Text(item.emoji, style: const TextStyle(fontSize: 22)),
@@ -450,7 +450,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: () => _buyOrToggleItem(item),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-            decoration: BoxDecoration(color: !item.unlocked ? AppColors.neonOrange : (equipped ? AppColors.synthPink : AppColors.surface), borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(color: !item.unlocked ? AppColors.neonBlue : (equipped ? AppColors.synthPink : AppColors.surface), borderRadius: BorderRadius.circular(10)),
             child: Text(!item.unlocked ? 'BUY' : (equipped ? 'UNEQUIP' : 'EQUIP'), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: !item.unlocked ? Colors.black : Colors.white)),
           ),
         ),
@@ -501,7 +501,7 @@ class AvatarPainter extends CustomPainter {
     if (auraId == null) return;
     const Offset c = Offset(cx, 100);
     if (auraId == 'a1') {
-      canvas.drawCircle(c, 93, Paint()..shader = RadialGradient(colors: [AppColors.neonOrange.withValues(alpha: 0.5), AppColors.neonOrange.withValues(alpha: 0)]).createShader(Rect.fromCircle(center: c, radius: 93)));
+      canvas.drawCircle(c, 93, Paint()..shader = RadialGradient(colors: [AppColors.neonBlue.withValues(alpha: 0.5), AppColors.neonBlue.withValues(alpha: 0)]).createShader(Rect.fromCircle(center: c, radius: 93)));
       final Paint fl = Paint()..color = AppColors.synthPink.withValues(alpha: 0.38);
       for (int i = 0; i < 7; i++) {
         final double a = i / 7 * 2 * math.pi;
