@@ -376,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
             color: AppColors.neonOrange, borderRadius: BorderRadius.circular(12),
             boxShadow: [BoxShadow(color: AppColors.neonOrange.withValues(alpha: 0.35), blurRadius: 12, spreadRadius: 0.5)],
           ),
-          child: const Center(child: Text('+ INJECT TASK', style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 1, color: Colors.black))),
+          child: const Center(child: Text('+ ADD TASK', style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 1, color: Colors.black))),
         ),
       )),
     ]),
