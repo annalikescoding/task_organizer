@@ -101,7 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ---------- LOGIC ----------
-  void _resetStreakChain() => setState(() => _streak = 0);
 
   void _handleCheckTap(Task task) {
     final int earned = (10 * _multiplier).round();
@@ -132,10 +131,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onEnergySelected(String v) {
     if (v == _selectedEnergy) return;
-    setState(() { _selectedEnergy = v; _resetStreakChain(); });
+    setState(() => _selectedEnergy = v);
   }
 
-  void _onSliderChanged(double v) => setState(() { _timePool = v; _resetStreakChain(); });
+  void _onSliderChanged(double v) => setState(() => _timePool = v);
 
   void _buyOrToggleItem(ShopItem item) {
     setState(() {
